@@ -6,7 +6,7 @@
 /*   By: adiehl-b <adiehl-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 15:36:39 by adiehl-b          #+#    #+#             */
-/*   Updated: 2025/08/31 15:37:36 by adiehl-b         ###   ########.fr       */
+/*   Updated: 2025/08/31 15:57:36 by adiehl-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	error(char *msg)
 	exit(EXIT_FAILURE);
 }
 
-int	ft_putstr_fde(char *s, int fd)
+int	ft_putstr_fds2(char *s, int fd)
 {
 	int	i;
 
@@ -71,7 +71,7 @@ int	main(int argc, char **argv, char **envp)
 	int		status;
 
 	if (argc != 5)
-		error("Usage: ./pipex file1 cmd1 cmd2 file2");
+		error("Error: Usage is ./pipex file1 cmd1 cmd2 file2");
 	if (pipe(fd) == -1)
 		error("Error");
 	pid1 = fork();

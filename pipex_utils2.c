@@ -6,9 +6,11 @@
 /*   By: adiehl-b <adiehl-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 15:42:17 by adiehl-b          #+#    #+#             */
-/*   Updated: 2025/08/31 15:44:32 by adiehl-b         ###   ########.fr       */
+/*   Updated: 2025/08/31 15:58:38 by adiehl-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "pipex.h"
 
 void	free_array(char **array)
 {

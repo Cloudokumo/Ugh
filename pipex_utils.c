@@ -6,7 +6,7 @@
 /*   By: adiehl-b <adiehl-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 15:36:45 by adiehl-b          #+#    #+#             */
-/*   Updated: 2025/08/31 15:43:15 by adiehl-b         ###   ########.fr       */
+/*   Updated: 2025/08/31 15:58:13 by adiehl-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	execute(char *cmd, char **envp)
 	if (!s_cmd || !s_cmd[0])
 	{
 		free_array(s_cmd);
-		exit(ft_putstr_fde("Command not found\n", 2));
+		exit(ft_putstr_fds2("Command not found\n", 2));
 	}
 	if (access(s_cmd[0], X_OK) == 0)
 		execve(s_cmd[0], s_cmd, envp);
@@ -92,7 +92,7 @@ void	execute(char *cmd, char **envp)
 	if (!path)
 	{
 		free_array(s_cmd);
-		exit(ft_putstr_fde("Command not found\n", 2));
+		exit(ft_putstr_fds2("Command not found\n", 2));
 	}
 	if (execve(path, s_cmd, envp) == -1)
 	{
