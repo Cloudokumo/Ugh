@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   pipex_utils2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adiehl-b <adiehl-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/31 15:36:52 by adiehl-b          #+#    #+#             */
-/*   Updated: 2025/08/31 15:45:11 by adiehl-b         ###   ########.fr       */
+/*   Created: 2025/08/31 15:42:17 by adiehl-b          #+#    #+#             */
+/*   Updated: 2025/08/31 15:44:32 by adiehl-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+void	free_array(char **array)
+{
+	int	i;
 
-# include "libft/libft.h"
-# include <fcntl.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <sys/types.h>
-# include <sys/wait.h>
-# include <unistd.h>
-
-void	error(char *msg);
-char	*find_path(char *cmd, char **envp);
-void	execute(char *cmd, char **envp);
-void	free_array(char **cmd);
-
-#endif
+	if (!array)
+		return ;
+	i = 0;
+	while (array[i])
+	{
+		free(array[i]);
+		i++;
+	}
+	free(array);
+}

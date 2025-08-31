@@ -7,7 +7,7 @@ RM = rm -f
 LIBFT_PATH = libft
 LIBFT = $(LIBFT_PATH)/libft.a
 
-SRCS = pipex.c pipex_utils.c
+SRCS = pipex.c pipex_utils.c pipex_utils2.c
 
 OBJS = $(SRCS:.c=.o)
 

@@ -6,26 +6,11 @@
 /*   By: adiehl-b <adiehl-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 15:36:45 by adiehl-b          #+#    #+#             */
-/*   Updated: 2025/08/31 15:38:29 by adiehl-b         ###   ########.fr       */
+/*   Updated: 2025/08/31 15:43:15 by adiehl-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-
-void	free_array(char **array)
-{
-	int	i;
-
-	if (!array)
-		return ;
-	i = 0;
-	while (array[i])
-	{
-		free(array[i]);
-		i++;
-	}
-	free(array);
-}
 
 static char	*get_path_env(char **envp)
 {
