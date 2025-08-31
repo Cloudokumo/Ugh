@@ -91,7 +91,15 @@ void	execute(char *cmd, char **envp)
 		ft_putstr_fd("Command not found\n", 2);
 		exit(127);
 	}
-	path = find_path(s_cmd[0], envp);
+	if (s_cmd[0][0] == '/') 
+	{
+    	if (access(s_cmd[0], F_OK) == 0) 
+        		path = ft_strdup(s_cmd[0]);
+		else 
+        	path = NULL;
+	} 
+	else 
+    	path = find_path(s_cmd[0], envp);
 	if (!path)
 	{
 		free_array(s_cmd);

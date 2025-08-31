@@ -1,0 +1,1 @@
+-rwxr-xr-x  1 moi moi     0 Aug 31 05:18 outfile.txt
