@@ -6,7 +6,7 @@
 /*   By: adiehl-b <adiehl-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 15:36:39 by adiehl-b          #+#    #+#             */
-/*   Updated: 2025/08/31 15:57:36 by adiehl-b         ###   ########.fr       */
+/*   Updated: 2025/08/31 16:01:08 by adiehl-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,11 @@ void	parent_process(char **argv, char **envp, int *fd)
 
 	fileout = open(argv[4], O_CREAT | O_RDWR | O_TRUNC, 0777);
 	if (fileout == -1)
+	{
+		close(fd[0]);
+		close(fd[1]);
 		error("Error");
+	}
 	dup2(fd[0], STDIN_FILENO);
 	dup2(fileout, STDOUT_FILENO);
 	close(fd[0]);
