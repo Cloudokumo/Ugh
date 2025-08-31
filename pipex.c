@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pipex.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adiehl-b <adiehl-b@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/31 15:36:39 by adiehl-b          #+#    #+#             */
+/*   Updated: 2025/08/31 15:37:36 by adiehl-b         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pipex.h"
 
 void	error(char *msg)
@@ -6,13 +18,28 @@ void	error(char *msg)
 	exit(EXIT_FAILURE);
 }
 
+int	ft_putstr_fde(char *s, int fd)
+{
+	int	i;
+
+	i = 0;
+	if (s)
+		while (s[i] != '\0')
+			write(fd, &s[i++], 1);
+	return (127);
+}
+
 void	child_process(char **argv, char **envp, int *fd)
 {
 	int	filein;
 
 	filein = open(argv[1], O_RDONLY, 0777);
 	if (filein == -1)
+	{
+		close(fd[0]);
+		close(fd[1]);
 		error("Error");
+	}
 	dup2(fd[1], STDOUT_FILENO);
 	dup2(filein, STDIN_FILENO);
 	close(fd[0]);
@@ -63,4 +90,3 @@ int	main(int argc, char **argv, char **envp)
 	waitpid(pid2, &status, 0);
 	return (0);
 }
-

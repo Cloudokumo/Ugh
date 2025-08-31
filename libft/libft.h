@@ -53,8 +53,7 @@ void				ft_lstdelone(t_list *lst, void (*del)(void *));
 void				ft_lstclear(t_list **lst, void (*del)(void *));
 void				ft_lstiter(t_list *lst, void (*f)(void *));
 
-double				ft_atof(const char *nptr);
-size_t ft_strlen(const char *str);
+size_t				ft_strlen(const char *str);
 size_t				ft_strlcpy(char *dst, const char *src, size_t size);
 size_t				ft_strlcat(char *dest, const char *src, size_t size);
 

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pipex_utils.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adiehl-b <adiehl-b@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/31 15:36:45 by adiehl-b          #+#    #+#             */
+/*   Updated: 2025/08/31 15:38:29 by adiehl-b         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pipex.h"
 
 void	free_array(char **array)
@@ -5,7 +17,7 @@ void	free_array(char **array)
 	int	i;
 
 	if (!array)
-		return;
+		return ;
 	i = 0;
 	while (array[i])
 	{
@@ -14,7 +26,6 @@ void	free_array(char **array)
 	}
 	free(array);
 }
-
 
 static char	*get_path_env(char **envp)
 {
@@ -88,23 +99,15 @@ void	execute(char *cmd, char **envp)
 	if (!s_cmd || !s_cmd[0])
 	{
 		free_array(s_cmd);
-		ft_putstr_fd("Command not found\n", 2);
-		exit(127);
+		exit(ft_putstr_fde("Command not found\n", 2));
 	}
-	if (s_cmd[0][0] == '/') 
-	{
-    	if (access(s_cmd[0], F_OK) == 0) 
-        		path = ft_strdup(s_cmd[0]);
-		else 
-        	path = NULL;
-	} 
-	else 
-    	path = find_path(s_cmd[0], envp);
+	if (access(s_cmd[0], X_OK) == 0)
+		execve(s_cmd[0], s_cmd, envp);
+	path = find_path(s_cmd[0], envp);
 	if (!path)
 	{
 		free_array(s_cmd);
-		ft_putstr_fd("Command not found\n", 2);
-		exit(127);
+		exit(ft_putstr_fde("Command not found\n", 2));
 	}
 	if (execve(path, s_cmd, envp) == -1)
 	{
